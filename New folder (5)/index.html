@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>St Jois Daycare - Jovena, Singida</title>
+  
+  <!-- Google Fonts: San Francisco-like -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome for social icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
+  
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: #fff8f0;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Container */
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px 60px;
+    }
+    
+    /* Header with taller hero background image */
+    header {
+      position: relative;
+      background: url('hero.jpg') center center/cover no-repeat;
+      color: white;
+      height: 80vh; /* taller header */
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+      box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.35); /* dark overlay */
+      user-select: none;
+      padding: 0 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 3rem;
+      letter-spacing: 1.2px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+    header p {
+      margin: 10px 0 0;
+      font-weight: 500;
+      font-style: italic;
+      font-size: 1.3rem;
+      opacity: 0.9;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+    }
+    
+    /* Navigation */
+    nav {
+      background: #ff9f00;
+      display: flex;
+      justify-content: center;
+      padding: 12px 10px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-radius: 0 0 30px 30px;
+      box-shadow: 0 3px 8px rgba(255, 159, 0, 0.4);
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 18px;
+      font-weight: 600;
+      font-size: 1rem;
+      position: relative;
+      padding: 4px 0;
+      transition: color 0.3s ease;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 3px;
+      background: #fff;
+      border-radius: 3px;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #333;
+    }
+    nav a:hover::after,
+    nav a:focus::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    
+    /* Sections */
+    section {
+      background: white;
+      border-radius: 20px;
+      padding: 30px 30px 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.6s forwards;
+      animation-delay: 0.2s;
+    }
+    section:nth-child(odd) {
+      animation-delay: 0.35s;
+    }
+    section:nth-child(even) {
+      animation-delay: 0.5s;
+    }
+    
+    h2 {
+      color: #ff7f50;
+      margin-top: 0;
+      font-weight: 700;
+      font-size: 1.9rem;
+      letter-spacing: 0.8px;
+      margin-bottom: 20px;
+    }
+    
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      color: #555;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    ul li {
+      margin-bottom: 10px;
+    }
+    
+    /* Contact */
+    .map iframe {
+      width: 100%;
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      height: 280px;
+      margin-top: 15px;
+      transition: transform 0.3s ease;
+    }
+    .map iframe:hover {
+      transform: scale(1.02);
+    }
+    
+    /* Form */
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border: 2px solid #ffb347;
+      border-radius: 15px;
+      font-size: 1rem;
+      margin-top: 15px;
+      font-weight: 500;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      resize: vertical;
+      font-family: inherit;
+    }
+    form input:focus,
+    form textarea:focus {
+      border-color: #ff7f50;
+      outline: none;
+      box-shadow: 0 0 8px rgba(255,127,80,0.5);
+    }
+    form button {
+      margin-top: 20px;
+      background: #ff7f50;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 14px 0;
+      width: 100%;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 8px 15px rgba(255,127,80,0.4);
+      font-family: inherit;
+    }
+    form button:hover,
+    form button:focus {
+      background: #ff9f00;
+      box-shadow: 0 12px 20px rgba(255,159,0,0.6);
+      outline: none;
+    }
+    
+    /* Footer */
+    footer {
+      background: #333;
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+      border-radius: 30px 30px 0 0;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+      user-select: none;
+    }
+    footer p {
+      margin: 0 0 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    footer a {
+      color: white;
+      margin: 0 15px;
+      font-size: 1.6rem;
+      transition: color 0.3s ease;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    footer a:hover,
+    footer a:focus {
+      color: #ff9f50;
+    }
+    
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        flex-wrap: wrap;
+        border-radius: 0 0 20px 20px;
+      }
+      nav a {
+        margin: 8px 12px;
+        font-size: 0.9rem;
+      }
+      main {
+        padding-bottom: 40px;
+      }
+      header h1 {
+        font-size: 2.1rem;
+      }
+      section {
+        padding: 25px 20px 35px;
+      }
+    }
+    
+    /* Animation */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>St Jois Daycare</h1>
+    <p>Jovena, Singida</p>
+    <p><em>“Nurturing Little Hearts for a Brighter Future”</em></p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="#apply">Apply Now</a>
+  </nav>
+
+  <main>
+    <section id="about" style="animation-delay: 0.1s;">
+      <h2>About Us</h2>
+      <p>
+        St Jois Daycare is a trusted early childhood center based in Jovena, Singida. Our goal is to give children a safe, nurturing space to learn, grow, and flourish.
+      </p>
+    </section>
+
+    <section id="services" style="animation-delay: 0.3s;">
+      <h2>Our Services</h2>
+      <ul>
+        <li>Safe and secure environment for children</li>
+        <li>Qualified and caring caregivers</li>
+        <li>Creative play and learning programs</li>
+        <li>Nutritious meals and snacks</li>
+        <li>Daily routines, story time, and naps</li>
+        <li>Outdoor play areas</li>
+      </ul>
+    </section>
+
+    <section id="contact" style="animation-delay: 0.7s;">
+      <h2>Contact Us</h2>
+      <p>Phone: +255 655 293 232</p>
+      <p>Phone 2: +255 754 047 360</p>
+      <p>Phone 3: +255 628 915 749</p>
+      <p>Email: stjoisdaycare@example.com</p>
+      <p>Location: Jovena, Singida, Tanzania</p>
+      <div class="map">
+        <!-- Replace the src below with your actual Google Maps embed link -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19860.538059536394!2d34.74712825276506!3d-4.820278651653354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18404a1a3ebd013d%3A0x2fbb4b7a452c7a5c!2sSingida!5e0!3m2!1sen!2stz!4v1691630400000!5m2!1sen!2stz"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </section>
+
+    <section id="apply" style="animation-delay: 0.9s;">
+      <h2>Apply Now</h2>
+      <form>
+        <input type="text" placeholder="Parent's Full Name" required />
+        <input type="text" placeholder="Child's Full Name" required />
+        <input type="number" placeholder="Child's Age" required min="0" max="17" />
+        <textarea placeholder="Any special needs or notes" rows="4"></textarea>
+        <button type="submit">Submit Application</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 St Jois Daycare | Jovena, Singida</p>
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/st_jois_daycare_singida" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/255655293232" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </footer>
+
+</body>
+</html>
